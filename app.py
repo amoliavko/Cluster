@@ -43,7 +43,7 @@ def main():
         raise SystemExit
 
     if service_quantity == 0:
-        raise SystemExit
+        print('Be careful, {} = 0'.format(new_service))
 
     service_distribution(example_data, new_service, service_quantity)
     print(example_data)
