@@ -25,24 +25,24 @@ def interactive():
 
 def update(example_data, service, count):
 
-    def less_load_server(config_dict):
+    def less_load_server(example_data):
         '''Определение менее нагруженного сервера'''
         service_sum = {}
-        for i in config_dict:
-            service_sum[i] = sum(config_dict[i].values())
+        for i in example_data:
+            service_sum[i] = sum(example_data[i].values())
 
         less_server = min(service_sum, key=service_sum.get)
         return less_server
 
-    def service_distribution(config_dict, service, count):
+    def service_distribution(example_data, service, count):
         '''Распределение сервисов по серверам'''
         for i in range(int(count)):
-            server = less_load_server(config_dict)
+            server = less_load_server(example_data)
 
-            if service in config_dict[server]:
-                config_dict[server][service] += 1
+            if service in example_data[server]:
+                example_data[server][service] += 1
             else:
-                config_dict[server][service] = 1
+                example_data[server][service] = 1
 
     service_distribution(example_data, service, count)
 
