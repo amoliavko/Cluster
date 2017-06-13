@@ -42,8 +42,8 @@ def main():
         print('An integer is expected! Try again.')
         raise SystemExit
 
-    if service_quantity == 0:
-        print('Be careful, {} = 0'.format(new_service))
+    if service_quantity <= 0:
+        print('Be careful, {} equals or less then 0'.format(new_service))
 
     service_distribution(example_data, new_service, service_quantity)
     print(example_data)
