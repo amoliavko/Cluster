@@ -5,18 +5,8 @@
 Результат отображается в консоли
 '''
 
+
 def main():
-    my_dict = {'server8': {'print': 8, 'service2': 24, 'web': 18, 'service8': 8},
-              'server3': {'print': 8, 'service2': 24, 'web': 18, 'service3': 3},
-              'server4': {'service4': 4, 'print': 8, 'service2': 24, 'web': 18},
-              'server5': {'print': 8, 'service5': 5, 'web': 18, 'service2': 24},
-              'server6': {'print': 8, 'service2': 24, 'web': 18, 'service6': 6},
-              'server7': {'print': 8, 'service2': 24, 'web': 18, 'service7': 7},
-              'server1': {'print': 7, 'service2': 24, 'web': 18, 'service1': 1},
-              'server0': {'service0': 0, 'print': 8, 'service2': 34, 'web': 18},
-              'server10': {'service10': 10, 'print': 8, 'service2': 24, 'web': 18},
-              'server9': {'print': 8, 'service2': 24, 'web': 18, 'service9': 9},
-              'server2': {'print': 8, 'service2': 26, 'web': 18}}
 
     example_data = {
         'ginger': {
