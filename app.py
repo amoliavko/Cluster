@@ -1,39 +1,52 @@
 '''
 Скрипт обновления конфигурации кластера.
-
-Конфигурация кластера представлена в виде файла 'config'
-(возможно заменить словарем в коде)
+Конфигурация кластера представлена в виде словаря 'example_data'
 Ввод осуществляется в интерактивном режиме.
-Результат отображается в консоли и обновленном файле 'config'
+Результат отображается в консоли
 '''
 
-try:
-    file = open('config', 'r')
-    my_dict = eval(file.read())
-    file.close()
-except FileNotFoundError:
-    print('Expected config file')
-    raise SystemExit
-except SyntaxError:
-    print('The file is empty!')
-    raise SystemExit
+def main():
+    my_dict = {'server8': {'print': 8, 'service2': 24, 'web': 18, 'service8': 8},
+              'server3': {'print': 8, 'service2': 24, 'web': 18, 'service3': 3},
+              'server4': {'service4': 4, 'print': 8, 'service2': 24, 'web': 18},
+              'server5': {'print': 8, 'service5': 5, 'web': 18, 'service2': 24},
+              'server6': {'print': 8, 'service2': 24, 'web': 18, 'service6': 6},
+              'server7': {'print': 8, 'service2': 24, 'web': 18, 'service7': 7},
+              'server1': {'print': 7, 'service2': 24, 'web': 18, 'service1': 1},
+              'server0': {'service0': 0, 'print': 8, 'service2': 34, 'web': 18},
+              'server10': {'service10': 10, 'print': 8, 'service2': 24, 'web': 18},
+              'server9': {'print': 8, 'service2': 24, 'web': 18, 'service9': 9},
+              'server2': {'print': 8, 'service2': 26, 'web': 18}}
 
-new_service = input('Enter service name:\n')
+    example_data = {
+        'ginger': {
+            'django': 2,
+            'flask': 3,
+        },
+        'cucumber': {
+            'flask': 1,
+        },
+    }
 
-if not new_service:
-    print('Service name is missing! Try again.')
-    raise SystemExit
+    new_service = input('Enter service name:\n')
 
-service_quantity_input = input('Enter number of instances:\n')
+    if not new_service:
+        print('Service name is missing! Try again.')
+        raise SystemExit
 
-try:
-    service_quantity = int(service_quantity_input)
-except ValueError:
-    print('An integer is expected! Try again.')
-    raise SystemExit
+    service_quantity_input = input('Enter number of instances:\n')
 
-if service_quantity == 0:
-    raise SystemExit
+    try:
+        service_quantity = int(service_quantity_input)
+    except ValueError:
+        print('An integer is expected! Try again.')
+        raise SystemExit
+
+    if service_quantity == 0:
+        raise SystemExit
+
+    service_distribution(example_data, new_service, service_quantity)
+    print(example_data)
 
 
 def less_load_server(config_dict):
@@ -57,11 +70,5 @@ def service_distribution(config_dict, new_service, service_quantity):
             config_dict[server][new_service] = 1
 
 
-service_distribution(my_dict, new_service, service_quantity)
-
-file = open('config', 'w')
-file.write(str(my_dict))
-file.close()
-
 if __name__ == '__main__':
-    print(my_dict)
+    main()
